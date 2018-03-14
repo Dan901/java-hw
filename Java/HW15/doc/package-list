@@ -1,0 +1,7 @@
+hr.fer.zemris.webapps.blog.dao
+hr.fer.zemris.webapps.blog.dao.jpa
+hr.fer.zemris.webapps.blog.init
+hr.fer.zemris.webapps.blog.model
+hr.fer.zemris.webapps.blog.servlets
+hr.fer.zemris.webapps.blog.servlets.forms
+hr.fer.zemris.webapps.blog.servlets.util

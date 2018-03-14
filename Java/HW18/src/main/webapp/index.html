@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Galerija</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/htmlescaping.js"></script>
+<script>
+	$(document).ready(function() {
+		$.ajax({
+				url: 'rest/images/tag',
+				type: 'GET',
+				dataType: 'json'
+			})
+			.done(function(tags) {
+				var html = "";
+				if (tags.length == 0) {
+					html = "No tags...";
+				} else {
+					for (var i = 0; i < tags.length; i++) {
+						var name = htmlEscape(tags[i]);
+						html += "<button onclick=\"filterByTag('" + name + "');\">" + name + "</button>";
+					}
+				}
+				$("#tags").html(html + "<hr>");
+			});
+	});
+
+	function filterByTag(tag) {
+		$.ajax({
+				url: 'rest/images/tag/' + tag,
+				type: 'GET',
+				dataType: 'json',
+			})
+			.done(function(names) {
+				var html = "";
+				if (names.length == 0) {
+					html = "No images...";
+				} else {
+					for (var i = 0; i < names.length; i++) {
+						var name = htmlEscape(names[i]);
+						html += "<span class=\"img\"><img alt=\"thumbnail\" src=\"servlets/thumbnail?name=" + name + "\" onclick=\"loadImage('" + name + "');\"/></span>";
+					}
+				}
+				$("#thumbnails").html(html);
+			});
+	}
+
+	function loadImage(name) {
+		$.ajax({
+				url: 'rest/images/' + name,
+				type: 'GET',
+				dataType: 'json',
+			})
+			.done(function(image) {
+				$("#description").html("<br><hr>" + htmlEscape(image.description));
+
+				var html = "Tags associated with this image:<ul>";
+				for (var i = 0; i < image.tags.length; i++) {
+					var tag = htmlEscape(image.tags[i]);
+					html += "<li>" + tag + "</li>";
+				}
+				$("#image_tags").html(html + "</ul>");
+
+				$("#image").html("<img alt=\"Image\" src=\"servlets/image?name=" + htmlEscape(image.name) + "\"/>");
+			});
+	}
+</script>
+</head>
+<body>
+	<div class="text">Choose one of the tags:</div><br>
+	<div id="tags">&nbsp;</div><br>
+	<div id="thumbnails">&nbsp;</div><br>
+	<div class="full_image">
+		<div id="description" class="desc">&nbsp;</div><br>
+		<div id="image" class="img">&nbsp;</div><br>
+		<div id="image_tags">&nbsp;</div>
+	</div>
+</body>
+</html>

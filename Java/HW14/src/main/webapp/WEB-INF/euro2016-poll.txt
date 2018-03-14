@@ -1,0 +1,8 @@
+1	Croatia	https://en.wikipedia.org/wiki/Croatia_national_football_team
+2	France	https://en.wikipedia.org/wiki/France_national_football_team
+3	England	https://en.wikipedia.org/wiki/England_national_football_team
+4	Germany	https://en.wikipedia.org/wiki/Germany_national_football_team
+5	Spain	https://en.wikipedia.org/wiki/Spain_national_football_team
+6	Italy	https://en.wikipedia.org/wiki/Italy_national_football_team
+7	Belgium	https://en.wikipedia.org/wiki/Belgium_national_football_team
+8	Portugal	https://en.wikipedia.org/wiki/Portugal_national_football_team

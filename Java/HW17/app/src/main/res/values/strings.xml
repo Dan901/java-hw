@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HW17-0036485175</string>
+    <string name="action_settings">Settings</string>
+    <string name="result">Result</string>
+    <string name="title_activity_display">DisplayActivity</string>
+    <string name="error_msg" formatted="false">Prilikom obavljanja operacije %s nad unosima %s i %s došlo je do sljedeće greške: %s.</string>
+    <string name="result_msg" formatted="false">Rezultat operacije %s je %s.</string>
+    <string name="check_operation_msg">Morate odabrati jednu od operacija.</string>
+    <string name="email_subject">0036485175: dz report</string>
+    <string name="email_address">ana.baotic@infinum.hr</string>
+</resources>

@@ -1,0 +1,2 @@
+band-poll.txt	Voting for your favorite band	What is your favorite band? Click on a link to vote!
+euro2016-poll.txt	Voting for UEFA EURO 2016 winner	Who will win the 2016 UEFA European Championship? Click on a link to vote!

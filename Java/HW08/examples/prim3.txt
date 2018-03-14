@@ -1,0 +1,70 @@
+			load r0, @poruka
+			echo r0
+			iinput @broj
+			
+			load r0, @broj
+			move r10, 0
+			move r11, 1
+			move r12, 2
+			push r0
+			
+			call @fib
+			
+			increment r15
+			echo r0
+			halt
+
+@fib:		push r1
+			push r2
+			
+			decrement r15
+			decrement r15
+			
+			move r0, 1
+			
+			move r1, [r15+6]
+			testEquals r1, r11
+			jumpIfTrue @vratise
+			
+			testEquals r1, r12
+			jumpIfTrue @vratise
+			
+			testEquals r1, r10
+			move r0, 0
+			jumpIfTrue @vratise
+			
+			move r1, [r15+6]
+			decrement r1
+			push r1
+			
+			call @fib
+			increment r15
+			move [r15+2], r0
+			
+			move r1, [r15+6]
+			decrement r1
+			decrement r1
+			push r1
+			
+			call @fib
+			increment r15
+			move [r15+1], r0
+			
+			move r1, [r15+2]
+			move r2, [r15+1]
+			add r0, r1, r2
+			
+@vratise:	increment r15
+			increment r15
+			
+			pop r2
+			pop r1
+			
+			ret
+	
+
+@poruka:	DEFSTR "Unesite broj (0-6): "
+@broj:		RESERVE
+
+			RESERVE:30
+@stackTop:	RESERVE
